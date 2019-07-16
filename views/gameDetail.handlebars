@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Prize: {{game.name}}</h5>
+          <div class="row">
+            <div class="col-6">
+              <dl>
+                <dt>Open</dt>
+                <dd id="isOpen">
+                  {{#if game.isOver}}
+                  No
+                  {{else}}
+                  Yes
+                  {{/if}}
+                </dd>
+                <dt>Winner</dt>
+                <dd id="winner">
+                  {{#if winner}}
+                  {{winner.name}}
+                  {{else}}
+                  n/a
+                  {{/if}}
+                </dd>
+              </dl>
+            </div>
+            <div class="col-6">
+              <dl>
+                <dt>People</dt>
+                <dd id="numPeople">{{numPeople}}</dd>
+                <dt>Points</dt>
+                <dd id="numEntries">{{numEntries}}</dd>
+              </dl>
+            </div>
+          </div>
+          {{#if game.isOver}}
+          <a href="/games/{{game.id}}/raffle" class="btn btn-primary float-right">View Winner</a>
+          {{else}}
+          <a href="/games/{{game.id}}/raffle"
+            onclick="return confirm('Are you sure you want to finish this game and pick a winner?')"
+            class="btn btn-primary float-right">Start Raffle</a>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="alert alert-success d-none">Entry Saved</div>
+          <div class="alert alert-danger d-none">Failed saving entry</div>
+          <h5 class="card-title">Add your entries here</h5>
+          <form class="clearfix mb-4" id="entryForm">
+            <input type="hidden" name="gameId" value="{{game.id}}">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" class="form-control" aria-describedby="name" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+              <label for="entries">Points</label>
+              <input type="number" id="points" class="form-control" aria-describedby="points" placeholder="Points">
+            </div>
+            <div class="form-group">
+              <div class="hidden" id="selectedAvatar"><img></div>
+
+              <div class="btn-group">
+                <div class="dropdown">
+                  <input type="hidden" name="avatar-id">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" id="avatar">
+                    Choose your avatar
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="avatar">
+                    <a class="dropdown-item" href="#" data-image-id="0"> <img 
+                        src="http://demo.st-marron.info/roulette/sample/coin.png">Coin</a>
+                    <a class="dropdown-item" href="#" data-image-id="1"> <img 
+                        src="http://demo.st-marron.info/roulette/sample/star.png">Star</a>
+                    <a class="dropdown-item" href="#" data-image-id="2"> <img 
+                        src="http://demo.st-marron.info/roulette/sample/mshroom.png">Mushroom</a>
+                    <a class="dropdown-item" href="#" data-image-id="3"> <img 
+                        src="http://demo.st-marron.info/roulette/sample/chomp.png">Chomper</a>
+                    <a class="dropdown-item" href="#" data-image-id="4"> <img 
+                        src="http://demo.st-marron.info/roulette/sample/flower.png">Flower</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button id="submitEntry" class="btn btn-primary float-right">Add Player</button>
+
+          </form>
+
+          <a href="/">← Back To Home</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/js/index.js"></script>

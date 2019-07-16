@@ -1,0 +1,46 @@
+<div class="container cardBody">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="card text-center">
+        <div class="card-header bg-dark text-white">
+          <h2>The Winner is ... </h2>
+        </div>
+        <div class="card-body">
+          <div class="row" id="replace" style="min-height: 300px">
+            <div class="roulette_container">
+              <div class="roulette" style="display:none;">
+                <img src="http://demo.st-marron.info/roulette/sample/coin.png">
+                <img src="http://demo.st-marron.info/roulette/sample/star.png">
+                <img src="http://demo.st-marron.info/roulette/sample/mshroom.png">
+                <img src="http://demo.st-marron.info/roulette/sample/chomp.png">
+                <img src="http://demo.st-marron.info/roulette/sample/flower.png">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer bg-dark text-primary" id="winnerName">
+          <h2>{{winner.name}}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+<script src="/js/roulette.js"></script>
+<script>
+  $(function () {
+    $('#winnerName').hide();
+    var spinner = $(".roulette");
+    spinner.roulette({
+      stopImageNumber: {{ winner.avatar }},
+      duration: 5,
+      stopCallback: function () {
+        $('#winnerName').show();
+        var element = document.getElementById("replace");
+        element.classList.add("cardRow");
+      }
+    })
+    spinner.roulette("start");
+  })
+</script>

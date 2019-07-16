@@ -1,0 +1,36 @@
+.list-group-item {
+  line-height: 2.5;
+}
+body {
+  background-image: url('../images/background4.png');
+}
+
+.roulette, .cardBody {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.cardRow {
+  background-image: url('../images/spiral1.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.dropdown-menu, .dropdown-toggle {
+  width: 250px;
+}
+
+.dropdown-item {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 25px;
+}
+
+.dropdown img {
+  margin: 10px;
+  width: 75px;
+}
